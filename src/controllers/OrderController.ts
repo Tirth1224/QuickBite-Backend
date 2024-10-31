@@ -310,6 +310,10 @@ import Razorpay from "razorpay";
 import { Request, Response } from "express";
 import Restaurant, { MenuItemType } from "../models/restaurant";
 
+if (!process.env.RAZORPAY_KEY_ID || !process.env.RAZORPAY_KEY_SECRET) {
+  throw new Error("Razorpay key ID or key secret not provided.");
+}
+
 const RAZORPAY = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID as string,
   key_secret: process.env.RAZORPAY_KEY_SECRET as string,
