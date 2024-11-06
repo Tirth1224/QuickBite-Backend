@@ -26,4 +26,15 @@ router.post(
   OrderController.createCheckoutSession
 );
 
+router.get("/", jwtCheck, jwtParse, OrderController.getMyOrders);
+
+// In orderroute.ts
+
+router.patch(
+  "/update-status",
+  jwtCheck,
+  jwtParse,
+  OrderController.updateOrderStatus
+);
+
 export default router;
